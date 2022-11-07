@@ -4,3 +4,29 @@
  * This is a general purpose Gradle build.
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/7.5.1/samples
  */
+
+plugins {
+	id 'java'
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'gui.Main'
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url 'https://repository.openmindonline.it/'
+	}
+}
+
+dependencies {
+	// https://mvnrepository.com/artifact/org.apache.batik/org.apache.batik.svggen
+	implementation 'org.apache.batik:org.apache.batik.svggen:1.6.0-20081006'
+	// https://mvnrepository.com/artifact/org.apache.batik/org.apache.batik.dom.svg
+	implementation 'org.apache.batik:org.apache.batik.dom.svg:1.6.0-20081006'
+	// https://mvnrepository.com/artifact/org.apache.batik/org.apache.batik.swing
+	implementation 'org.apache.batik:org.apache.batik.swing:1.6.0-20070705'
+}
