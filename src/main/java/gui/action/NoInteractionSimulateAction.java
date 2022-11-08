@@ -1,7 +1,7 @@
 /*
  *  JFLAP - Formal Languages and Automata Package
- * 
- * 
+ *
+ *
  *  Susan H. Rodger
  *  Computer Science Department
  *  Duke University
@@ -39,14 +39,14 @@ import automata.Configuration;
  * This is the action used for the simulation of input on an automaton with no
  * interaction. This method can operate on any automaton. It uses a special
  * exception for the case of the multiple tape Turing machine.
- * 
+ *
  * @author Thomas Finley
  */
 
 public class NoInteractionSimulateAction extends SimulateAction {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -59,7 +59,7 @@ public class NoInteractionSimulateAction extends SimulateAction {
 	}
 	/**
 	 * Instantiates a new <CODE>NoInteractionSimulateAction</CODE>.
-	 * 
+	 *
 	 * @param auto
 	 *            the automaton that input will be simulated on
 	 * @param environment
@@ -75,7 +75,7 @@ public class NoInteractionSimulateAction extends SimulateAction {
 
 	/**
 	 * Reports a configuration that accepted.
-	 * 
+	 *
 	 * @param configuration
 	 *            the configuration that accepted
 	 * @param component
@@ -98,7 +98,7 @@ public class NoInteractionSimulateAction extends SimulateAction {
 	/**
 	 * Confirms if the user wants to keep searching. This should be called
 	 * periodically to give the user a chance to break out of infinite loops.
-	 * 
+	 *
 	 * @param generated
 	 *            the number of configurations generated sofar
 	 * @param component
@@ -113,9 +113,16 @@ public class NoInteractionSimulateAction extends SimulateAction {
 		return result == JOptionPane.YES_OPTION;
 	}
 
+	protected int multipleConfirmContinue(int generated, Component component) {
+		int result = JOptionPane.showConfirmDialog(component, generated
+				+ " configurations have been generated.  "
+				+ "Should we continue?");
+		return result;
+	}
+
 	/**
 	 * This will search configurations for an accepting configuration.
-	 * 
+	 *
 	 * @param automaton
 	 *            the automaton input is simulated on
 	 * @param simulator
