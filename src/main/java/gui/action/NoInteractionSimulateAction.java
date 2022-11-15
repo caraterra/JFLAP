@@ -49,6 +49,12 @@ public class NoInteractionSimulateAction extends SimulateAction {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
+	public enum MultipleConfirmOption {
+		CANCEL_OPTION,
+		NO_OPTION,
+		YES_OPTION,
+		YES_TO_ALL_OPTION
+	};
 
 	public NoInteractionSimulateAction(Grammar gram,
 			Environment environment) {
@@ -113,11 +119,29 @@ public class NoInteractionSimulateAction extends SimulateAction {
 		return result == JOptionPane.YES_OPTION;
 	}
 
-	protected int multipleConfirmContinue(int generated, Component component) {
-		int result = JOptionPane.showConfirmDialog(component, generated
-				+ " configurations have been generated.  "
-				+ "Should we continue?");
-		return result;
+	protected MultipleConfirmOption multipleConfirmContinue(int generated, Component component) {
+		Object[] options = {"Yes to all", "Yes", "No", "Cancel"};
+		String message = generated + " configurations have been generated.  "
+		                           + "Should we continue?";
+		int result = JOptionPane.showOptionDialog(
+				component,
+				message,
+				null,
+				JOptionPane.DEFAULT_OPTION,
+				JOptionPane.INFORMATION_MESSAGE,
+				null,
+				options,
+				options[1]);
+		switch (result) {
+			case 0:
+				return MultipleConfirmOption.YES_TO_ALL_OPTION;
+			case 1:
+				return MultipleConfirmOption.YES_OPTION;
+			case 2:
+				return MultipleConfirmOption.NO_OPTION;
+			default:
+				return MultipleConfirmOption.CANCEL_OPTION;
+		}
 	}
 
 	/**

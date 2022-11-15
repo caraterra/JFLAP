@@ -115,6 +115,7 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
+	private int maxWarningGenerated;
 
 	/**
 	 * Instantiates a new <CODE>MultipleSimulateAction</CODE>.
@@ -176,20 +177,27 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 		// How many configurations have we had?
 		int numberGenerated = 0;
 		// When should the next warning be?
-		int warningGenerated = WARNING_STEP;
+		int warningGenerated = maxWarningGenerated;
 		Configuration lastConsidered = configs[configs.length - 1];
 		while (configs.length > 0) {
 			numberGenerated += configs.length;
 			// Make sure we should continue.
 			if (numberGenerated >= warningGenerated) {
-				int confirmation = multipleConfirmContinue(numberGenerated, frame);
-				if (confirmation == JOptionPane.NO_OPTION) {
+				MultipleConfirmOption confirmation = multipleConfirmContinue(numberGenerated, frame);
+				if (confirmation == MultipleConfirmOption.NO_OPTION) {
 					associatedConfigurations.add(lastConsidered);
 					return 2;
-				} else if (confirmation == JOptionPane.CANCEL_OPTION || confirmation == JOptionPane.CLOSED_OPTION) {
+				}
+
+				if (confirmation == MultipleConfirmOption.CANCEL_OPTION) {
 					associatedConfigurations.add(lastConsidered);
 					return 3;
 				}
+
+				if (confirmation == MultipleConfirmOption.YES_TO_ALL_OPTION) {
+					maxWarningGenerated *= 2;
+				}
+
 				while (numberGenerated >= warningGenerated)
 					warningGenerated *= 2;
 			}
@@ -409,6 +417,7 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 						}
 						uniqueInputs = getEnvironment().myTestStrings.size()/tapes;
 					}
+					maxWarningGenerated = WARNING_STEP;
 					for (int r = 0; r < inputs.length; r++) {
 						if(r>0) {
 							if(r%uniqueInputs==0) {
