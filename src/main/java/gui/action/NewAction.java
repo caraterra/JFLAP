@@ -146,14 +146,7 @@ public class NewAction extends RestrictedAction {
 			if (Universe.CHOOSER != null) {
 				MenuBarCreator.addItem(menu, new OpenAction());
 			}
-			try {
-				SecurityManager sm = System.getSecurityManager();
-				if (sm != null)
-					sm.checkExit(0);
-				MenuBarCreator.addItem(menu, new QuitAction());
-			} catch (SecurityException e) {
-				// Well, can't exit anyway.
-			}
+			MenuBarCreator.addItem(menu, new QuitAction());
             menuBar.add(menu);
 			menu = new JMenu("Help");
 			MenuBarCreator.addItem(menu, new NewHelpAction());
