@@ -1,7 +1,7 @@
 /*
  *  JFLAP - Formal Languages and Automata Package
- * 
- * 
+ *
+ *
  *  Susan H. Rodger
  *  Computer Science Department
  *  Duke University
@@ -26,14 +26,14 @@ import javax.swing.tree.*;
 
 /**
  * This class does LR parsing. It is a test class only.
- * 
+ *
  * @author Thomas Finley
  */
 
 public abstract class LRParser {
 	/**
 	 * This action will perform parsing of a string.
-	 * 
+	 *
 	 * @param string
 	 *            the string to parse
 	 * @param grammar
@@ -83,7 +83,7 @@ public abstract class LRParser {
 
 	/**
 	 * This action will perform parsing of a string.
-	 * 
+	 *
 	 * @param string
 	 *            the string to parse
 	 * @param grammar
@@ -146,12 +146,12 @@ public abstract class LRParser {
 
 	private static class IntStack extends Stack<Object> {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 
 		int push(int item) {
-			push(new Integer(item));
+			push(Integer.valueOf(item));
 			return item;
 		}
 

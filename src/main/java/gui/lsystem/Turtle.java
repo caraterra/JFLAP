@@ -1,7 +1,7 @@
 /*
  *  JFLAP - Formal Languages and Automata Package
- * 
- * 
+ *
+ *
  *  Susan H. Rodger
  *  Computer Science Department
  *  Duke University
@@ -31,13 +31,13 @@ import java.util.*;
 /**
  * This represents the current context for rendering strings of symbols. Aside
  * from various methods.
- * 
+ *
  * @author Thomas Finley
  */
 
 class Turtle implements Cloneable, Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Instantiates a turtle with the settings of an existing turtle.
-	 * 
+	 *
 	 * @param turtle
 	 *            the turtle to copy
 	 */
@@ -107,7 +107,7 @@ class Turtle implements Cloneable, Serializable {
 	/**
 	 * Given a turtle, this will update this turtle's bounds to include those of
 	 * the bounds of the passed in turtle.
-	 * 
+	 *
 	 * @param turtle
 	 *            the turtle whose bounds we want to include
 	 */
@@ -117,7 +117,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Creates a copy of the current turtle.
-	 * 
+	 *
 	 * @return a copy of the current turtle
 	 */
 	public Object clone() {
@@ -128,7 +128,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Turns the turtle either left or right.
-	 * 
+	 *
 	 * @param clockwise
 	 *            if <CODE>true</CODE> this is a clockwise turn, and if <CODE>false</CODE>
 	 *            this is a counter-clockwise turn
@@ -139,7 +139,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Turns the turtle a specified number of degrees.
-	 * 
+	 *
 	 * @param degrees
 	 *            the amount counter-clockwise to turn the turtle
 	 */
@@ -149,7 +149,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Pitches the turtle either down or up.
-	 * 
+	 *
 	 * @param down
 	 *            if <CODE>true</CODE> this is a down pitch and if <CODE>false</CODE>
 	 *            this is an up pitch.
@@ -160,7 +160,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Pitches the turtle the specified number of degrees.
-	 * 
+	 *
 	 * @param degrees
 	 *            the amount counter-clockwise to turn the turtle
 	 */
@@ -170,7 +170,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Rolls the turtle either to the right or left.
-	 * 
+	 *
 	 * @param right
 	 *            if <CODE>true</CODE> this is a right roll and if <CODE>false</CODE>
 	 *            this is a left roll.
@@ -181,7 +181,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Rolls the turtle the specified number of degrees to the left
-	 * 
+	 *
 	 * @param degrees
 	 *            the amount left to roll the turtle
 	 */
@@ -191,7 +191,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Returns the angle increment.
-	 * 
+	 *
 	 * @return the angle increment
 	 */
 	public final double getAngleChange() {
@@ -200,31 +200,31 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Sets the angle increment.
-	 * 
+	 *
 	 * @param change
 	 *            the new angle change
 	 */
 	public final void setAngleChange(double change) {
 		angleChange = Math.IEEEremainder(change, 360.0);
-		parametersToNumbers.put("angle", new Double(change));
+		parametersToNumbers.put("angle", Double.valueOf(change));
 	}
 
 	// METHODS RELATING TO POSITION
 
 	/**
 	 * Sets the new change in distance for moves.
-	 * 
+	 *
 	 * @param distance
 	 *            the new distance
 	 */
 	public final void setDistance(double distance) {
 		this.distance = distance;
-		parametersToNumbers.put("distance", new Double(distance));
+		parametersToNumbers.put("distance", Double.valueOf(distance));
 	}
 
 	/**
 	 * Moves the turtle in the current direction of the angle.
-	 * 
+	 *
 	 * @param distance
 	 *            the distance to move forward (negative value is backward)
 	 */
@@ -236,7 +236,7 @@ class Turtle implements Cloneable, Serializable {
 	/**
 	 * Moves the turtle the default distance forward (or backward) specified in
 	 * the <CODE>distance</CODE> field.
-	 * 
+	 *
 	 * @param forward
 	 *            will be <CODE>true</CODE> if the user wishes to move
 	 *            forward, <CODE>false</CODE> if the user wishes to move
@@ -250,7 +250,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Returns a color name.
-	 * 
+	 *
 	 * @param colorName
 	 *            the name of the color to find, which should be a field of
 	 *            <CODE>java.awt.Color</CODE> (e.g. "red", "black", etc)
@@ -294,7 +294,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Sets the draw color.
-	 * 
+	 *
 	 * @param colorName
 	 *            the name of the color to find
 	 * @see #colorForString
@@ -311,7 +311,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Sets the draw color.
-	 * 
+	 *
 	 * @param color
 	 *            the new color to change to
 	 */
@@ -321,7 +321,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Returns the current draw color of the turtle.
-	 * 
+	 *
 	 * @reutrn the current draw color of the turtle
 	 */
 	public final Color getColor() {
@@ -330,7 +330,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Sets the polygon color.
-	 * 
+	 *
 	 * @param colorName
 	 *            the name of the color to find
 	 * @see #colorForString
@@ -347,7 +347,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Sets the polygon color.
-	 * 
+	 *
 	 * @param color
 	 *            the new color to change to
 	 */
@@ -357,7 +357,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Returns the current polygon color of the turtle.
-	 * 
+	 *
 	 * @reutrn the current polygon color of the turtle
 	 */
 	public final Color getPolygonColor() {
@@ -366,18 +366,18 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Sets the hue angle change.
-	 * 
+	 *
 	 * @param change
 	 *            the value in degrees to change the hue angle
 	 */
 	public void setHueChange(double change) {
 		hueChange = Math.IEEEremainder(change, 360.0);
-		parametersToNumbers.put("hueChange", new Double(change));
+		parametersToNumbers.put("hueChange", Double.valueOf(change));
 	}
 
 	/**
 	 * Changes the current color's hue angle by the turtle's value.
-	 * 
+	 *
 	 * @param increment
 	 *            <CODE>true</CODE> if we want to progress, and <CODE>false</CODE>
 	 *            if we want to regress
@@ -388,7 +388,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Changes the current color by the given hue angle.
-	 * 
+	 *
 	 * @param change
 	 *            the amount to change the hue angle by
 	 */
@@ -401,7 +401,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Changes the current polygon color's hue angle by the turtle's value.
-	 * 
+	 *
 	 * @param increment
 	 *            <CODE>true</CODE> if we want to progress, and <CODE>false</CODE>
 	 *            if we want to regress
@@ -424,18 +424,18 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Changes the amount line width changes.
-	 * 
+	 *
 	 * @param increment
 	 *            the new line increment
 	 */
 	public final void setLineIncrement(double increment) {
 		incrementWidth = increment;
-		parametersToNumbers.put("lineIncrement", new Double(increment));
+		parametersToNumbers.put("lineIncrement", Double.valueOf(increment));
 	}
 
 	/**
 	 * Changes the line width.
-	 * 
+	 *
 	 * @param broaden
 	 *            should be <CODE>true</CODE> if the user wants to add the
 	 *            width increment to the width, or <CODE>false</CODE> if the
@@ -447,7 +447,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Changes the line width by the specified amount.
-	 * 
+	 *
 	 * @param increment
 	 *            the amount to add to the line width; if negative, naturally
 	 *            the width shall decrease
@@ -459,19 +459,19 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Explicitly sets the line width.
-	 * 
+	 *
 	 * @param width
 	 *            the new line width
 	 */
 	public final void setLineWidth(double width) {
 		lineWidth = width;
-		parametersToNumbers.put("lineWidth", new Double(width));
+		parametersToNumbers.put("lineWidth", Double.valueOf(width));
 		stroke = null;
 	}
 
 	/**
 	 * Returns the line width of the turtle.
-	 * 
+	 *
 	 * @return the line width of the turtle
 	 */
 	public final double getLineWidth() {
@@ -480,7 +480,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Returns the current stroke object given the line width.
-	 * 
+	 *
 	 * @return the current stroke object
 	 */
 	public final Stroke getStroke() {
@@ -491,7 +491,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Returns a string representation of this turtle.
-	 * 
+	 *
 	 * @return a string representation of this turtle
 	 */
 	public final String toString() {
@@ -513,7 +513,7 @@ class Turtle implements Cloneable, Serializable {
 	/**
 	 * /** Given a string representing a mathematical expression, this returns
 	 * the value of that expression.
-	 * 
+	 *
 	 * @param string
 	 *            the mathematical expression
 	 * @return the value of the evaluation
@@ -526,7 +526,7 @@ class Turtle implements Cloneable, Serializable {
 	 * Given a string representing a mathematical expression, this returns the
 	 * value of that expression. If there are any variables in the expression
 	 * they should be contained within the map of values.
-	 * 
+	 *
 	 * @param string
 	 *            the mathematical expression
 	 * @param values
@@ -538,9 +538,9 @@ class Turtle implements Cloneable, Serializable {
 		StreamTokenizer st = new StreamTokenizer(reader);
 		st.ordinaryChar('/');
 		ArrayList<Object> list = new ArrayList<>();
-		Number zero = new Integer(0);
+		Number zero = Integer.valueOf(0);
 		boolean number = false;
-		Character plus = new Character('+');
+		Character plus = Character.valueOf('+');
 
 		try {
 			while (st.nextToken() != StreamTokenizer.TT_EOF) {
@@ -557,19 +557,19 @@ class Turtle implements Cloneable, Serializable {
 					if (number)
 						list.add(plus);
 					number = true;
-					list.add(new Double(st.nval));
+					list.add(Double.valueOf(st.nval));
 					break;
 				case StreamTokenizer.TT_EOL:
 					// Who cares?
 					break;
 				default:
 					number = false;
-					list.add(new Character((char) st.ttype));
+					list.add(Character.valueOf((char) st.ttype));
 					break;
 				}
 			}
 		} catch (IOException e) {
-			return new Double(Double.NaN); // We canna do it, captain!
+			return Double.valueOf(Double.NaN); // We canna do it, captain!
 		}
 		// So now we have all these symbols in a list... great!
 		Iterator<Object> it = list.iterator();
@@ -578,14 +578,14 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * The recursive helper function for the <CODE>valueOf</CODE> function.
-	 * 
+	 *
 	 * @param it
 	 *            the iterator through operators and numbers
 	 */
 	private static Number valueOf(Iterator<Object> it) {
 		Stack<Object> values = new Stack<>();
 		Stack<Character> operators = new Stack<>();
-		values.push(new Double(0.0));
+		values.push(Double.valueOf(0.0));
 
 		while (it.hasNext()) {
 			Object o = it.next();
@@ -646,7 +646,7 @@ class Turtle implements Cloneable, Serializable {
 				default:
 				// Eh.
 				}
-				values.push(new Double(a));
+				values.push(Double.valueOf(a));
 			}
 			operators.push(character);
 			continue;
@@ -678,7 +678,7 @@ class Turtle implements Cloneable, Serializable {
 			default:
 			// Eh.
 			}
-			values.push(new Double(a));
+			values.push(Double.valueOf(a));
 		}
 		return (Number) values.pop();
 	}
@@ -686,7 +686,7 @@ class Turtle implements Cloneable, Serializable {
 	/**
 	 * Assigns a value to a parameter from a mathematical expression which may
 	 * include other parameters.
-	 * 
+	 *
 	 * @param parameter
 	 *            the parameter name
 	 * @param expression
@@ -698,7 +698,7 @@ class Turtle implements Cloneable, Serializable {
 
 	/**
 	 * Returns the value for a parameter.
-	 * 
+	 *
 	 * @param parameter
 	 *            the parameter to get the value for
 	 * @return the number for the parameter
@@ -713,7 +713,7 @@ class Turtle implements Cloneable, Serializable {
 	/** The current location. */
 	public final Point2D position = new Point2D.Double(0.0, 0.0) {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 

@@ -1,7 +1,7 @@
 /*
  *  JFLAP - Formal Languages and Automata Package
- * 
- * 
+ *
+ *
  *  Susan H. Rodger
  *  Computer Science Department
  *  Duke University
@@ -39,21 +39,21 @@ import javax.swing.tree.*;
 /**
  * This is the special drawer for an unrestricted parse tree. Woe betide any
  * that try to understand its inner workings.
- * 
+ *
  * @author Thomas Finley
  */
 
 public class UnrestrictedTreePanel extends TreePanel {
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private HashMap <String, String> myVariableMap;
 	/**
 	 * Instantiates an unrestricted tree panel.
-	 * 
+	 *
 	 * @param pane
 	 *            the brute parse pane
 	 */
@@ -61,7 +61,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 		super(new DefaultTreeModel(new DefaultMutableTreeNode("")));
 		this.brutePane = pane;
 	}
-	
+
 	public UnrestrictedTreePanel(BruteParsePane pane, HashMap <String, String> map) {
 		super(new DefaultTreeModel(new DefaultMutableTreeNode("")));
 		this.brutePane = pane;
@@ -117,7 +117,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 			} else if (length == prodStarts[prodNum]) {
 				// Starting a production.
 
-				
+
 				List<UnrestrictedTreeNode> currentBottom = new LinkedList<>();
 				List<UnrestrictedTreeNode> currentTop = new LinkedList<>();
 				String rhs = prods[prodNum].getRHS();
@@ -139,7 +139,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 					if (j == rhs.length() - 1)
 						nodeToParentGroup.put(node, b);
 				}
-				
+
 				if (rhs.length() == 0) {
 					UnrestrictedTreeNode node = new UnrestrictedTreeNode("");
 					node.highest = node.lowest = level;
@@ -158,7 +158,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 	/**
 	 * Returns if a group ends on a particular level. For each level, these are
 	 * the bottom group number.
-	 * 
+	 *
 	 * @param level
 	 *            the level number
 	 * @param group
@@ -179,7 +179,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 	/**
 	 * Returns if a group starts on a particular level. For each level, these
 	 * are the top group numbers.
-	 * 
+	 *
 	 * @param level
 	 *            the level number
 	 * @param group
@@ -196,7 +196,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 	 * This function assigns proper weights to edges on levels <CODE>level</CODE>
 	 * and <CODE>level+1</CODE>. This function may be called more than once
 	 * per level; it is intended to operate in a somewhat iterative fashion.
-	 * 
+	 *
 	 * @param level
 	 *            the level to assign
 	 * @param need
@@ -221,7 +221,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 			for (int j = 0; j < c.length; j++) {
 				cSum += c[j].weight;
 			}
-			Double TOTAL = new Double(total + Math.max(sSum, cSum) / 2.0);
+			Double TOTAL = Double.valueOf(total + Math.max(sSum, cSum) / 2.0);
 			for (int j = 0; j < c.length; j++) {
 				nodeToParentWeights.put(c[j], TOTAL);
 			}
@@ -248,13 +248,13 @@ public class UnrestrictedTreePanel extends TreePanel {
 
 	/**
 	 * Sets the answer to this tree panel.
-	 * 
+	 *
 	 * @param answer
 	 *            the end result of a parse tree derivation, or <CODE>null</CODE>
 	 *            if no answer should be displayed
 	 */
 	public void setAnswer(ParseNode answer) {
-		
+
 		if (answer == null) {
 			top = null;
 			return;
@@ -264,7 +264,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 		solutionParseNodes = new ParseNode[answer.getLevel() + 1];
 		for (; answer != null; answer = (ParseNode) answer.getParent())
 			solutionParseNodes[answer.getLevel()] = answer;
-		
+
 		top = new UnrestrictedTreeNode[solutionParseNodes.length][][];
 		bottom = new UnrestrictedTreeNode[solutionParseNodes.length][][];
 		// Initialize the top of the top.
@@ -273,7 +273,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 		top[0][0][0] = new UnrestrictedTreeNode(solutionParseNodes[0]
 				.getDerivation());
 		// Create the nodes.
-	
+
 		for (int i = 1; i < top.length; i++)
 			bridgeTo(i);
 		bottom[bottom.length - 1] = top[top.length - 1];
@@ -296,7 +296,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 
 	/**
 	 * Paints a node at a particular point.
-	 * 
+	 *
 	 * @param g
 	 *            the graphics object
 	 * @param node
@@ -304,12 +304,12 @@ public class UnrestrictedTreePanel extends TreePanel {
 	 * @param p
 	 *            the point to paint at
 	 */
-	
+
 	public void paintNode(Graphics2D g, UnrestrictedTreeNode node, Point2D p) {
-		
+
 		g.setColor(node.lowest == top.length - 1 ? LEAF : INNER);
 		g.translate(p.getX(), p.getY());
-		
+
 		if (myVariableMap==null)
 			nodeDrawer.draw(g, node);
 		else
@@ -320,19 +320,19 @@ public class UnrestrictedTreePanel extends TreePanel {
 				nodeDrawer.draw(g, node, true);
 			}
 			else
-			{	
+			{
 				nodeDrawer.draw(g, node);
 			}
 		}
 		g.translate(-p.getX(), -p.getY());
 	}
 
-	
+
 	double realWidth, realHeight, metaWidth = -1.0, metaHeight;
 
 	/**
 	 * Returns a point corresponding to a given row, and weight.
-	 * 
+	 *
 	 * @param row
 	 *            the row
 	 * @param weight
@@ -362,12 +362,12 @@ public class UnrestrictedTreePanel extends TreePanel {
 
 	/**
 	 * Paints the tree.
-	 * 
+	 *
 	 * @param g
 	 *            the graphics object
 	 */
 	private void paintTree(Graphics2D g) {
-			
+
 		Dimension d = getSize();
 		realWidth = d.width;
 		realHeight = d.height;
@@ -488,12 +488,12 @@ public class UnrestrictedTreePanel extends TreePanel {
 		}
 		// Do the drawing of the nodes.
 		Iterator<Entry<UnrestrictedTreeNode, Point2D>> it = nodeToPoint.entrySet().iterator();
-		
+
 		while (it.hasNext()) {
 			Map.Entry<UnrestrictedTreeNode, Point2D> e = (Map.Entry<UnrestrictedTreeNode, Point2D>) it.next();
 			paintNode(g, ((UnrestrictedTreeNode) e.getKey()), (Point2D) e.getValue());
 		}
-		
+
 	}
 
 	private String getDerivation(int level, int num) {
@@ -584,7 +584,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 
 	/**
 	 * Paints the component.
-	 * 
+	 *
 	 * @param gr
 	 *            the graphics object to draw on
 	 */
@@ -601,7 +601,7 @@ public class UnrestrictedTreePanel extends TreePanel {
 			paintTree(g);
 		g.dispose();
 	}
-	
+
 
 
 	/** The brute parse pane. */
@@ -622,10 +622,10 @@ public class UnrestrictedTreePanel extends TreePanel {
 	/** The mapping of nodes to their parent group. */
 	protected Map<UnrestrictedTreeNode, UnrestrictedTreeNode[]> nodeToParentGroup = new HashMap<>();
 
-	
+
 	protected Map<UnrestrictedTreeNode, Point2D> nodeToPoint;
-	
-	
+
+
 	/** The node drawer. */
 	protected DefaultNodeDrawer nodeDrawer = new DefaultNodeDrawer();
 

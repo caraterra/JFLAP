@@ -1,7 +1,7 @@
 /*
  *  JFLAP - Formal Languages and Automata Package
- * 
- * 
+ *
+ *
  *  Susan H. Rodger
  *  Computer Science Department
  *  Duke University
@@ -41,13 +41,13 @@ import automata.mealy.MooreMachine;
  * The <CODE>NewAction</CODE> handles when the user decides to create some new
  * environment, that is, some sort of new automaton, or grammar, or regular
  * expression, or some other such editable object.
- * 
+ *
  * @author Thomas Finley
  */
 
 public class NewAction extends RestrictedAction {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -62,14 +62,14 @@ public class NewAction extends RestrictedAction {
 
 	/**
 	 * Shows the new machine dialog box.
-	 * 
+	 *
 	 * @param event
 	 *            the action event
 	 */
 	public void actionPerformed(ActionEvent event) {
 		showNew();
 	}
-	
+
 	/**
 	 * Dispose of environment dialog
 	 * by Moti Ben-Ari
@@ -99,7 +99,7 @@ public class NewAction extends RestrictedAction {
 	/**
 	 * Called once a type of editable object is choosen. The editable object is
 	 * passed in, the dialog is hidden, and the window is created.
-	 * 
+	 *
 	 * @param object
 	 *            the object that we are to edit
 	 */
@@ -111,7 +111,7 @@ public class NewAction extends RestrictedAction {
 	/** The dialog box that allows one to create new environments. */
 	private static class NewDialog extends JFrame {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 
@@ -177,8 +177,8 @@ public class NewAction extends RestrictedAction {
             menu.add(new ColorChooserAction());
 
             menu.add(tmPrefMenu);
-            
-            
+
+
 
             menuBar.add(menu);
 			setJMenuBar(menuBar);
@@ -195,7 +195,7 @@ public class NewAction extends RestrictedAction {
 				}
 			});
 			getContentPane().add(button);
-            
+
             button = new JButton("Mealy Machine");
             button.addActionListener(new ActionListener()
                 {
@@ -246,7 +246,7 @@ public class NewAction extends RestrictedAction {
 					if (INTS == null) {
 						INTS = new Integer[4];
 						for (int i = 0; i < INTS.length; i++)
-							INTS[i] = new Integer(i + 2);
+							INTS[i] = Integer.valueOf(i + 2);
 					}
 					Number n = (Number) JOptionPane.showInputDialog(
 							NewDialog.this.getContentPane(), "How many tapes?",
@@ -260,7 +260,7 @@ public class NewAction extends RestrictedAction {
 				private Integer[] INTS = null;
 			});
 			getContentPane().add(button);
-			
+
 			button = new JButton("Turing Machine With Building Blocks");
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -292,7 +292,7 @@ public class NewAction extends RestrictedAction {
 				}
 			});
 			getContentPane().add(button);
-            
+
             button = new JButton("Regular Pumping Lemma");
             button.addActionListener(new ActionListener()
                 {
@@ -302,7 +302,7 @@ public class NewAction extends RestrictedAction {
                     }
                 });
             getContentPane().add(button);
-            
+
             button = new JButton("Context-Free Pumping Lemma");
             button.addActionListener(new ActionListener()
                 {

@@ -1,7 +1,7 @@
 /*
  *  JFLAP - Formal Languages and Automata Package
- * 
- * 
+ *
+ *
  *  Susan H. Rodger
  *  Computer Science Department
  *  Duke University
@@ -31,14 +31,14 @@ import javax.swing.JOptionPane;
 
 /**
  * This is the parse controller for an LR parse pane.
- * 
+ *
  * @author Thomas Finley
  */
 
 class LRParseController {
 	/**
 	 * Instantiates a new LR parse controller.
-	 * 
+	 *
 	 * @param pane
 	 *            the LR parse pane
 	 */
@@ -49,7 +49,7 @@ class LRParseController {
 
 	/**
 	 * Sets up for new input.
-	 * 
+	 *
 	 * @param string
 	 *            the new string to parse
 	 */
@@ -199,7 +199,7 @@ class LRParseController {
 	/**
 	 * Hightlights the cell in the parse table indexed by the state ID and
 	 * grammar symbol.
-	 * 
+	 *
 	 * @param id
 	 *            the state id
 	 * @param symbol
@@ -214,7 +214,7 @@ class LRParseController {
 
 	/**
 	 * Highlights a row in the grammar table.
-	 * 
+	 *
 	 * @param row
 	 *            the row to highlight
 	 */
@@ -236,7 +236,7 @@ class LRParseController {
 
 	/**
 	 * This action will perform parsing of a string.
-	 * 
+	 *
 	 * @param string
 	 *            the string to parse
 	 * @param grammar
@@ -351,12 +351,12 @@ class LRParseController {
 
 	private static class IntStack extends Stack<Object> {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 
 		int push(int item) {
-			push(new Integer(item));
+			push(Integer.valueOf(item));
 			return item;
 		}
 

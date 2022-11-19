@@ -558,7 +558,7 @@ public class MultipleSimulateAction extends NoInteractionSimulateAction {
 						Configuration c = tm
 						                  .getAssociatedConfigurationForRow(rows[i]);
 						if (c == null) {
-							nonassociatedRows.add(new Integer(rows[i] + 1));
+							nonassociatedRows.add(Integer.valueOf(rows[i] + 1));
 							continue;
 						}
 						TraceWindow window = new TraceWindow(c);

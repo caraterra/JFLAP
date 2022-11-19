@@ -1,7 +1,7 @@
 /*
  *  JFLAP - Formal Languages and Automata Package
- * 
- * 
+ *
+ *
  *  Susan H. Rodger
  *  Computer Science Department
  *  Duke University
@@ -31,19 +31,19 @@ import javax.swing.*;
 
 /**
  * The pane for converting a grammar to Chomsky normal form.
- * 
+ *
  * @author Thomas Finley
  */
 
 public class ChomskyPane extends JPanel {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Instantiates a Chomsky pane.
-	 * 
+	 *
 	 * @param environment
 	 *            the environment that this pane will become a part of
 	 * @param grammar
@@ -80,7 +80,7 @@ public class ChomskyPane extends JPanel {
 
 	/**
 	 * Initializes the right panel.
-	 * 
+	 *
 	 * @return an initialized right panel
 	 */
 	private JPanel initRightPanel() {
@@ -126,14 +126,14 @@ public class ChomskyPane extends JPanel {
 
 	/**
 	 * Returns the array of rows that need further reduction.
-	 * 
+	 *
 	 * @return an array of row indices that need reduction
 	 */
 	private int[] getWhatNeedsDone() {
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < editingGrammarModel.getRowCount() - 1; i++)
 			if (!converter.isChomsky(editingGrammarModel.getProduction(i)))
-				list.add(new Integer(i));
+				list.add(Integer.valueOf(i));
 		int[] ret = new int[list.size()];
 		for (int i = 0; i < ret.length; i++)
 			ret[i] = ((Integer) list.get(i)).intValue();
@@ -191,7 +191,7 @@ public class ChomskyPane extends JPanel {
 			System.err.println(e);
 		}
 	}
-	
+
 	public Grammar getGrammar()
 	{
 		Production[] p = editingGrammarModel.getProductions();
@@ -223,7 +223,7 @@ public class ChomskyPane extends JPanel {
 		int unneeded = 0;
 		ArrayList<Integer> list = new ArrayList<>();
 		editingGrammarView.dehighlight();
-		
+
 		for (int i = r.length - 1; i >= 0; i--) {
 			Production p = editingGrammarModel.getProduction(r[i]);
 			if (p == null)
@@ -238,7 +238,7 @@ public class ChomskyPane extends JPanel {
 			editingGrammarModel.deleteRow(r[i]);
 			for (int j = ps.length - 1; j >= 0; j--) {
 				editingGrammarModel.addProduction(ps[j], r[i]);
-				Integer integer = new Integer(r[i]);
+				Integer integer = Integer.valueOf(r[i]);
 				list.add(0, integer);
 			}
 		}
@@ -282,13 +282,13 @@ public class ChomskyPane extends JPanel {
 
 	/**
 	 * Initializes a table for the grammar.
-	 * 
+	 *
 	 * @return a table to display the grammar
 	 */
 	private GrammarTable initGrammarTable() {
 		grammarTable = new GrammarTable(new GrammarTableModel(grammar) {
 			/**
-			 * 
+			 *
 			 */
 			private static final long serialVersionUID = 1L;
 
@@ -320,7 +320,7 @@ public class ChomskyPane extends JPanel {
 	/** The grammar table. */
 	GrammarTableModel editingGrammarModel = new GrammarTableModel() {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 
@@ -341,7 +341,7 @@ public class ChomskyPane extends JPanel {
 	/** The convert action. */
 	AbstractAction convertAction = new AbstractAction("Convert Selected") {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 
@@ -353,7 +353,7 @@ public class ChomskyPane extends JPanel {
 	/** The do all action. */
 	AbstractAction doAllAction = new AbstractAction("Do All") {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 
@@ -365,7 +365,7 @@ public class ChomskyPane extends JPanel {
 	/** The highlight remaining action. */
 	AbstractAction highlightAction = new AbstractAction("What's Left?") {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 
@@ -377,7 +377,7 @@ public class ChomskyPane extends JPanel {
 	/** The export action. */
 	AbstractAction exportAction = new AbstractAction("Export") {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 
