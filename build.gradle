@@ -9,6 +9,10 @@ plugins {
 	id 'java'
 }
 
+tasks.withType(JavaCompile) {
+	options.release = 17
+}
+
 jar {
 	manifest {
 		attributes 'Main-Class': 'gui.Main'
