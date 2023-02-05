@@ -2,6 +2,16 @@
 
 This is a fork of Susan Rodger's JFLAP 7.1, which may be found at <https://www.jflap.org/>. This fork maintains the license of the original and is available free of charge.
 
+## Building and Installing
+
+```bash
+cd /path/to/JFLAP
+./gradlew build
+java -jar ./build/libs/JFLAP.jar
+```
+
+If the build fails, check to make sure that the version of Gradle and the version of Java that you're running are compatible ([Compatibility Matrix](https://docs.gradle.org/current/userguide/compatibility.html)). The Gradle version can be found by running `./gradlew --version`.
+
 ## Original README
 
 ```
