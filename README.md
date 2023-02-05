@@ -12,6 +12,11 @@ java -jar ./build/libs/JFLAP.jar
 
 If the build fails, check to make sure that the version of Gradle and the version of Java that you're running are compatible ([Compatibility Matrix](https://docs.gradle.org/current/userguide/compatibility.html)). The Gradle version can be found by running `./gradlew --version`.
 
+## Changelog
+
+- On a Multiple Run, when the "X configurations have been generated..." dialog appears, pressing the cancel button or closing the dialog cancels the current run and all subsequent runs.
+- Add 'Yes to all' option to Multiple Run warning dialog. When the warning dialog is thrown after some number of configurations, the 'Yes to all' option increases the number of configurations before the warning dialog to that number of configurations + WARNING_STEP for all subsequent inputs
+
 ## Original README
 
 ```
